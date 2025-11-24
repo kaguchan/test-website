@@ -38,18 +38,6 @@
                 }
             }
         }
-
-        // ▼ 設定するパスワードをここに書きます
-        const PAGE_PASSWORD = "test1234";
-
-        // ▼ シンプルな入力ダイアログ
-        const userInput = prompt("パスワードを入力してください：");
-
-        // ▼ 判定
-        if (userInput !== PAGE_PASSWORD) {
-        document.body.innerHTML = "<h2 style='padding:40px; text-align:center;'>パスワードが違います。</h2>";
-        throw new Error("Unauthorized");
-        }
     </script>
 
     <style>
