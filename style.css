@@ -20,7 +20,7 @@ body {
     transform: scale(1.02);
     box-shadow: 0 20px 50px -12px rgba(0,0,0,0.1);
     z-index: 10;
-    background-color: #F8F8FA;
+    background-color: #F8F8FA; /* Slightly lighter on hover for brightness */
 }
 
 /* Image Handling */

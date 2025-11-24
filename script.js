@@ -16,33 +16,19 @@ function updateTime() {
 updateTime();
 setInterval(updateTime, 1000);
 
-
 // 2. Email Copy Logic
-// グローバルスコープに関数を公開する必要があるため、windowオブジェクトに紐付けるか、
-// もしくはHTML側でイベントリスナーを使用する形が望ましいですが、
-// 単純な移行であればこのままでも動作します（ブラウザの仕様による）。
-// よりモダンな書き方としては、HTMLのonclick属性ではなく、以下のようにイベントリスナーを追加することを推奨します。
-
-/*
-document.addEventListener('DOMContentLoaded', () => {
-    const emailButton = document.querySelector('.email-copy-trigger'); // クラスを追加する必要があります
-    if(emailButton) {
-        emailButton.addEventListener('click', copyEmail);
-    }
-});
-*/
-
 function copyEmail() {
     const emailElement = document.getElementById('email-text');
     if (!emailElement) return;
     
     const email = emailElement.innerText;
     
-    // Modern Clipboard API
+    // Modern Clipboard API check
     if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(email).then(() => {
             showToast();
         }).catch(err => {
+            // Error handling or fallback
             fallbackCopy(email);
         });
     } else {
@@ -50,6 +36,7 @@ function copyEmail() {
     }
 }
 
+// Fallback for older browsers or if API fails
 function fallbackCopy(text) {
     const textArea = document.createElement("textarea");
     textArea.value = text;
@@ -64,6 +51,7 @@ function fallbackCopy(text) {
     document.body.removeChild(textArea);
 }
 
+// Toast Notification
 function showToast() {
     const toast = document.getElementById('toast');
     if (!toast) return;
@@ -74,15 +62,17 @@ function showToast() {
     }, 3000);
 }
 
-// 3. Subtle Parallax / Cursor Effect (Optional Polish)
+// 3. Subtle Parallax / Cursor Effect (Optional)
 const cards = document.querySelectorAll('.bento-card');
 
 document.addEventListener('mousemove', (e) => {
+    // 画面がロードされていなければ何もしないなどのガードを入れる場合もありますが、
+    // ここではシンプルに実装します
     const x = e.clientX / window.innerWidth;
     const y = e.clientY / window.innerHeight;
 
     cards.forEach(card => {
-        // 必要に応じて視差効果のロジックをここに記述
+        // 必要に応じて視差効果を追加
         // const moveX = (x - 0.5) * 5;
         // const moveY = (y - 0.5) * 5;
         // card.style.transform = `translate(${moveX}px, ${moveY}px)`;

@@ -6,17 +6,17 @@
     <title>Creative Portfolio | Bento Grid</title>
     
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
+    <link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
+    <link href="[https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap](https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap)" rel="stylesheet">
     
     <!-- Tailwind CSS (Utility Framework) -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script>
     
     <!-- Phosphor Icons -->
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="[https://unpkg.com/@phosphor-icons/web](https://unpkg.com/@phosphor-icons/web)"></script>
 
-    <!-- Custom Config (Tailwind設定はHTMLに残します) -->
+    <!-- Custom Config (Tailwind設定) -->
     <script>
         tailwind.config = {
             theme: {
@@ -49,24 +49,143 @@
 
     <!-- Grid Container -->
     <main class="grid grid-cols-1 md:grid-cols-4 grid-rows-auto md:grid-rows-4 gap-4 md:gap-6 h-auto md:h-[800px]">
-        <!-- コンテンツ（変更なし） -->
-        <!-- ... (元のHTMLのarticleタグなどはそのままコピーしてください) ... -->
-        <!-- ここでは省略していますが、元のindex.htmlのmainタグの中身を全てここに記述します -->
-        
-        <!-- 例: Hero Section -->
-        <article class="bento-card col-span-1 md:col-span-2 md:row-span-2 p-8 flex flex-col justify-between group">
-            <!-- ... -->
-        </article>
-        
-        <!-- ... 他のセクション ... -->
 
-        <!-- Call To Action -->
-        <article class="bento-card col-span-1 md:col-span-1 md:row-span-2 p-6 flex flex-col justify-between">
-            <!-- ... -->
+        <!-- 1. Hero / Introduction (Large) -->
+        <article class="bento-card col-span-1 md:col-span-2 md:row-span-2 p-8 flex flex-col justify-between group">
+            <div class="flex justify-between items-start">
+                <span class="text-xs font-semibold tracking-widest uppercase text-gray-400">Welcome</span>
+                <i class="ph ph-sparkle text-2xl text-gray-300 group-hover:text-electric-blue transition-colors duration-300"></i>
+            </div>
+            <div>
+                <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl leading-tight mb-4">
+                    Designing with <br>
+                    <span class="italic text-gray-500">Emotion</span> & Logic.
+                </h1>
+                <p class="text-gray-500 text-sm md:text-base max-w-md leading-relaxed">
+                    東京を拠点とするUI/UXデザイナー兼エンジニア。<br>
+                    デジタル空間に「静寂」と「機能」を構築します。
+                </p>
+            </div>
         </article>
+
+        <!-- 2. Profile Image (Tall) -->
+        <article class="bento-card col-span-1 md:col-span-1 md:row-span-2 relative group">
+            <img src="[https://images.unsplash.com/photo-1485230405346-71acb9518d9c?q=80&w=2094&auto=format&fit=crop](https://images.unsplash.com/photo-1485230405346-71acb9518d9c?q=80&w=2094&auto=format&fit=crop)" 
+                 alt="Portrait" 
+                 class="card-img absolute inset-0 grayscale group-hover:grayscale-0 transition-all duration-500">
+            <div class="absolute bottom-0 left-0 p-6 bg-gradient-to-t from-black/60 to-transparent w-full">
+                <p class="text-white font-serif italic text-lg opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">About Me</p>
+            </div>
+        </article>
+
+        <!-- 3. Socials / Map (Split into small interactive blocks) -->
+        <div class="col-span-1 md:col-span-1 md:row-span-2 grid grid-rows-2 gap-4 md:gap-6">
+            
+            <!-- Map/Location -->
+            <article class="bento-card p-6 flex flex-col justify-between group cursor-pointer">
+                <div class="flex justify-between items-center">
+                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                    <span class="text-xs text-gray-400">Based in</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm">
+                        <i class="ph ph-map-pin text-xl"></i>
+                    </div>
+                    <div>
+                        <p class="font-medium text-sm">Tokyo, JP</p>
+                        <p class="text-xs text-gray-400" id="local-time">--:-- JST</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Social Links -->
+            <article class="bento-card p-6 flex flex-col justify-center gap-4">
+                <a href="#" class="flex items-center justify-between group/link">
+                    <div class="flex items-center gap-3">
+                        <i class="ph ph-instagram-logo text-2xl"></i>
+                        <span class="text-sm font-medium">Instagram</span>
+                    </div>
+                    <i class="ph ph-arrow-up-right transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform"></i>
+                </a>
+                <div class="h-px bg-gray-200 w-full"></div>
+                <a href="#" class="flex items-center justify-between group/link">
+                    <div class="flex items-center gap-3">
+                        <i class="ph ph-dribbble-logo text-2xl"></i>
+                        <span class="text-sm font-medium">Dribbble</span>
+                    </div>
+                    <i class="ph ph-arrow-up-right transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform"></i>
+                </a>
+            </article>
+        </div>
+
+        <!-- 4. Projects Showcase (Wide) -->
+        <article class="bento-card col-span-1 md:col-span-2 md:row-span-2 relative group cursor-pointer overflow-hidden">
+             <!-- Background Image for Project -->
+             <img src="[https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop](https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop)" 
+                  alt="Featured Project" 
+                  class="card-img absolute inset-0">
+             
+             <!-- Content Overlay -->
+             <div class="absolute inset-0 bg-white/80 opacity-90 group-hover:opacity-100 transition-opacity duration-300 p-8 flex flex-col justify-between">
+                 <div class="flex justify-between items-start">
+                     <span class="px-3 py-1 rounded-full border border-gray-300 text-xs uppercase tracking-wider bg-white/50 backdrop-blur-sm">Selected Work</span>
+                     <i class="ph ph-arrow-right text-2xl transform -rotate-45 group-hover:rotate-0 transition-transform duration-300"></i>
+                 </div>
+                 
+                 <div>
+                     <h3 class="font-serif text-3xl mb-2">Minimalist E-Commerce</h3>
+                     <p class="text-gray-600 text-sm line-clamp-2">
+                         サステナブルなライフスタイルブランドのための、余白を活かしたECサイト構築。Shopifyヘッドレス開発。
+                     </p>
+                     <div class="mt-4 flex gap-2">
+                         <span class="text-xs text-gray-400">#React</span>
+                         <span class="text-xs text-gray-400">#Tailwind</span>
+                         <span class="text-xs text-gray-400">#UXDesign</span>
+                     </div>
+                 </div>
+             </div>
+        </article>
+
+        <!-- 5. Skillset / Philosophy (Medium) -->
+        <article class="bento-card col-span-1 md:col-span-1 md:row-span-2 p-8 flex flex-col justify-center text-center">
+            <i class="ph ph-bezier-curve text-4xl mb-4 text-gray-400 mx-auto"></i>
+            <h4 class="font-serif text-xl mb-4">Philosophy</h4>
+            <p class="text-xs text-gray-500 leading-loose">
+                "Simplicity is the ultimate sophistication."<br>
+                複雑さを削ぎ落とし、本質的な美しさを追求します。コードもデザインも、美しくあるべきです。
+            </p>
+            <div class="mt-6 flex flex-wrap justify-center gap-2">
+                <span class="px-2 py-1 bg-white rounded border border-gray-100 text-[10px] text-gray-400">Figma</span>
+                <span class="px-2 py-1 bg-white rounded border border-gray-100 text-[10px] text-gray-400">TypeScript</span>
+                <span class="px-2 py-1 bg-white rounded border border-gray-100 text-[10px] text-gray-400">WebGL</span>
+            </div>
+        </article>
+
+        <!-- 6. Call To Action (Accent Color Focus) -->
+        <article class="bento-card col-span-1 md:col-span-1 md:row-span-2 p-6 flex flex-col justify-between">
+            <div>
+                <h3 class="font-serif text-2xl mb-2">Let's work together.</h3>
+                <p class="text-xs text-gray-500">新しいプロジェクトのご相談はこちらから。</p>
+            </div>
+
+            <!-- Email Copy Interaction -->
+            <div class="mt-4">
+                <div class="p-3 bg-white rounded-xl border border-gray-100 mb-4 flex items-center gap-2 cursor-pointer hover:bg-gray-50 transition-colors" onclick="copyEmail()">
+                    <i class="ph ph-copy text-gray-400"></i>
+                    <span class="text-xs text-gray-600 font-mono truncate" id="email-text">hello@portfolio.design</span>
+                </div>
+                
+                <!-- The Electric Blue Button -->
+                <a href="mailto:hello@portfolio.design" class="btn-electric w-full py-4 rounded-xl flex items-center justify-center gap-2 group">
+                    <span class="font-medium text-sm">Contact Me</span>
+                    <i class="ph ph-paper-plane-right"></i>
+                </a>
+            </div>
+        </article>
+
     </main>
 
-    <!-- Toast Notification -->
+    <!-- Notification Toast (Hidden by default) -->
     <div id="toast" class="fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-6 py-3 rounded-full text-sm shadow-xl opacity-0 translate-y-10 transition-all duration-300 pointer-events-none z-50 flex items-center gap-2">
         <i class="ph ph-check-circle text-green-400"></i>
         Email copied to clipboard
