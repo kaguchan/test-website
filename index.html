@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Portfolio | Bento Grid</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (Utility Framework) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Custom Config (Tailwind設定はHTMLに残します) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bento-bg': '#F5F5F7',
+                        'electric-blue': '#2563EB',
+                        'charcoal': '#1a1a1a',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    borderRadius: {
+                        'bento': '24px',
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.05)',
+                        'hover': '0 20px 50px -12px rgba(0,0,0,0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- CSSファイルの読み込み -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="p-4 md:p-8 max-w-[1400px] mx-auto min-h-screen flex flex-col justify-center">
+
+    <!-- Grid Container -->
+    <main class="grid grid-cols-1 md:grid-cols-4 grid-rows-auto md:grid-rows-4 gap-4 md:gap-6 h-auto md:h-[800px]">
+        <!-- コンテンツ（変更なし） -->
+        <!-- ... (元のHTMLのarticleタグなどはそのままコピーしてください) ... -->
+        <!-- ここでは省略していますが、元のindex.htmlのmainタグの中身を全てここに記述します -->
+        
+        <!-- 例: Hero Section -->
+        <article class="bento-card col-span-1 md:col-span-2 md:row-span-2 p-8 flex flex-col justify-between group">
+            <!-- ... -->
+        </article>
+        
+        <!-- ... 他のセクション ... -->
+
+        <!-- Call To Action -->
+        <article class="bento-card col-span-1 md:col-span-1 md:row-span-2 p-6 flex flex-col justify-between">
+            <!-- ... -->
+        </article>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-6 py-3 rounded-full text-sm shadow-xl opacity-0 translate-y-10 transition-all duration-300 pointer-events-none z-50 flex items-center gap-2">
+        <i class="ph ph-check-circle text-green-400"></i>
+        Email copied to clipboard
+    </div>
+
+    <!-- JSファイルの読み込み -->
+    <script src="script.js"></script>
+</body>
+</html>
