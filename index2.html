@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini 3 | The Agentic Era Begins</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        'pure-black': '#050505',
+                        'off-black': '#111111',
+                        'border-gray': '#333333',
+                        'text-gray': '#888888',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden; /* 横スクロール防止 */
+        }
+        .bento-card {
+            background-color: #111111;
+            border: 1px solid #333333;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            overflow: hidden;
+            position: relative;
+            /* パララックス用設定 */
+            z-index: 1;
+        }
+        .bento-card:hover {
+            border-color: #ffffff;
+            transform: translateY(-2px);
+            z-index: 10;
+        }
+        /* Hide scrollbar for clean look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050505; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333; 
+        }
+        .image-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 10;
+            pointer-events: none;
+        }
+        .content-layer {
+            position: relative;
+            z-index: 20;
+        }
+        
+        /* パララックス用の画像スタイル */
+        .parallax-img {
+            height: 120%; /* 移動領域を確保 */
+            width: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: -10%; /* 初期位置を中心に */
+            left: 0;
+            will-change: transform; /* パフォーマンス最適化 */
+            transition: transform 0.1s linear; /* 多少の滑らかさを追加 */
+        }
+
+        /* スクロール出現アニメーション */
+        .reveal-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="font-sans selection:bg-white selection:text-black">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 border-b border-border-gray bg-pure-black/90 backdrop-blur-sm transition-all duration-300" id="navbar">
+        <div class="max-w-[1400px] mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="font-display font-bold text-2xl tracking-tighter">Google DeepMind</div>
+            <div class="flex gap-6 text-sm font-medium tracking-wide">
+                <a href="#" class="text-text-gray hover:text-white transition-colors">RESEARCH</a>
+                <a href="#" class="text-text-gray hover:text-white transition-colors">MODELS</a>
+                <a href="#" class="text-white border border-white px-4 py-2 hover:bg-white hover:text-black transition-colors">TRY GEMINI 3</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-40 pb-20 px-6 relative z-10">
+        <div class="max-w-[1400px] mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end reveal-section">
+                <div class="lg:col-span-8">
+                    <p class="font-display text-text-gray mb-4 tracking-widest uppercase text-sm">November 18, 2025 — Release Note</p>
+                    <h1 class="font-display text-[12vw] leading-[0.85] font-bold tracking-tighter mb-8" id="hero-title">
+                        GEMINI 3
+                    </h1>
+                </div>
+                <div class="lg:col-span-4 pb-4">
+                    <p class="text-lg text-gray-300 leading-relaxed border-l border-white pl-6">
+                        推論能力の限界を突破し、真の自律型エージェントへ。<br>
+                        かつてない速度と精度で、あなたの思考を拡張する。
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Hero Image with Parallax -->
+            <div class="mt-12 w-full h-[60vh] relative overflow-hidden border border-border-gray group reveal-section" style="transition-delay: 0.1s;">
+                <div class="image-overlay group-hover:bg-black/20 transition-all duration-500"></div>
+                <!-- data-speed属性でパララックス速度を制御 -->
+                <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2565&auto=format&fit=crop" 
+                     alt="Abstract AI Structure" 
+                     class="parallax-img grayscale opacity-80"
+                     data-speed="0.08">
+                <div class="absolute bottom-6 left-6 z-30 font-display text-6xl font-bold opacity-50">v3.0</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Bento Grid Layout -->
+    <section class="py-20 px-6 relative z-20 bg-pure-black">
+        <div class="max-w-[1400px] mx-auto">
+            <div class="flex justify-between items-end mb-12 border-b border-border-gray pb-6 reveal-section">
+                <h2 class="font-display text-4xl font-medium">Core Architecture</h2>
+                <span class="font-mono text-text-gray">SYSTEM SPECS</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-rows-2 gap-6 h-auto">
+                
+                <!-- Card 1: Main Feature (Large) with Parallax -->
+                <div class="bento-card col-span-1 md:col-span-2 row-span-2 min-h-[500px] p-8 flex flex-col justify-between group reveal-section">
+                    <div class="image-overlay bg-black/50"></div>
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2670&auto=format&fit=crop" 
+                         class="parallax-img grayscale mix-blend-overlay opacity-60" 
+                         alt="Neural Network"
+                         data-speed="0.05">
+                    
+                    <div class="content-layer">
+                        <div class="w-12 h-12 border border-white flex items-center justify-center rounded-full mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                            </svg>
+                        </div>
+                        <h3 class="font-display text-3xl mb-2">Infinite Context</h3>
+                        <p class="text-gray-300">
+                            メモリ制限の概念を再定義。数年分のプロジェクト履歴、数千冊の技術文書をリアルタイムで保持し、文脈を完全に理解した回答を提供します。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 2: Speed (Text Only) -->
+                <div class="bento-card p-8 flex flex-col justify-between reveal-section" style="transition-delay: 0.1s;">
+                    <div>
+                        <h4 class="font-display text-xl text-text-gray mb-2">LATENCY</h4>
+                        <div class="font-display text-5xl font-bold">12ms</div>
+                    </div>
+                    <p class="text-sm text-gray-400 mt-4">
+                        Time to First Token.<br>人間の知覚速度を超える応答性。
+                    </p>
+                </div>
+
+                <!-- Card 3: Multimodal (Image) with Parallax -->
+                <div class="bento-card p-0 relative group reveal-section" style="transition-delay: 0.2s;">
+                     <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop" 
+                          class="parallax-img grayscale opacity-70 group-hover:opacity-100 transition-opacity duration-500" 
+                          alt="Vision"
+                          data-speed="0.1">
+                     <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black via-black/80 to-transparent z-20">
+                         <h3 class="font-display text-xl">Vision Native</h3>
+                         <p class="text-xs text-gray-300">ピクセルレベルの画像・動画理解</p>
+                     </div>
+                </div>
+
+                <!-- Card 4: Reasoning (Tall) -->
+                <div class="bento-card row-span-2 col-span-1 p-8 flex flex-col reveal-section" style="transition-delay: 0.15s;">
+                    <h3 class="font-display text-2xl mb-6">Autonomous Agent</h3>
+                    <div class="flex-grow border-l border-dashed border-gray-600 pl-4 space-y-6 text-sm text-gray-300">
+                        <div>
+                            <span class="block text-xs text-text-gray mb-1">PHASE 1</span>
+                            <p>ユーザー意図の解釈とタスク分解</p>
+                        </div>
+                        <div>
+                            <span class="block text-xs text-text-gray mb-1">PHASE 2</span>
+                            <p>外部ツールを使用した自律的な調査・実行</p>
+                        </div>
+                        <div>
+                            <span class="block text-xs text-text-gray mb-1">PHASE 3</span>
+                            <p>結果の検証と自己修正プロセス</p>
+                        </div>
+                        <div>
+                            <span class="block text-xs text-text-gray mb-1">COMPLETE</span>
+                            <p>最終成果物のデリバリー</p>
+                        </div>
+                    </div>
+                    <button class="mt-8 w-full border border-white py-3 text-sm hover:bg-white hover:text-black transition-colors uppercase tracking-widest">
+                        View Demo
+                    </button>
+                </div>
+
+                <!-- Card 5: Logic -->
+                <div class="bento-card p-8 flex items-center justify-center text-center reveal-section" style="transition-delay: 0.25s;">
+                    <div>
+                         <h3 class="font-display text-4xl font-bold mb-2">98.5%</h3>
+                         <p class="text-text-gray text-sm uppercase tracking-wide">MMLU Score</p>
+                         <p class="text-xs text-gray-500 mt-2">New World Record</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Details with Parallax -->
+    <section class="py-20 px-6 bg-off-black border-t border-border-gray relative z-20">
+        <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 reveal-section">
+            <div class="relative overflow-hidden h-96 border border-border-gray group">
+                <h2 class="font-display text-3xl mb-8 absolute top-8 left-8 z-20 mix-blend-difference">What's New in v3</h2>
+                 <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop" 
+                     class="parallax-img grayscale" 
+                     alt="Global Network"
+                     data-speed="0.06">
+            </div>
+            <div class="space-y-8 pt-8">
+                <div class="border-b border-border-gray pb-6 reveal-section" style="transition-delay: 0.1s;">
+                    <h4 class="font-display text-xl mb-2">System 2 Thinking</h4>
+                    <p class="text-gray-400">
+                        直感的な回答だけでなく、複雑な論理的推論を必要とするタスクにおいて、意図的に思考時間を確保し、より深い洞察を導き出します。
+                    </p>
+                </div>
+                <div class="border-b border-border-gray pb-6 reveal-section" style="transition-delay: 0.2s;">
+                    <h4 class="font-display text-xl mb-2">Personal Knowledge Graph</h4>
+                    <p class="text-gray-400">
+                        あなたの過去の対話、ドキュメント、好みを安全にローカルレベルでインデックス化。使うほどにあなた専用のAIへと進化します。
+                    </p>
+                </div>
+                <div class="pb-6 reveal-section" style="transition-delay: 0.3s;">
+                    <h4 class="font-display text-xl mb-2">Real-time Audio/Video</h4>
+                    <p class="text-gray-400">
+                        テキスト変換を介さないネイティブなマルチモーダル処理により、人間と同じようなテンポでの音声会話と、ビデオフィードのリアルタイム解析が可能です。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 border-t border-border-gray bg-pure-black relative z-20">
+        <div class="max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between items-center text-sm text-text-gray">
+            <div class="mb-4 md:mb-0">
+                &copy; 2025 Google DeepMind. All rights reserved.
+            </div>
+            <div class="flex gap-8">
+                <a href="#" class="hover:text-white">Privacy</a>
+                <a href="#" class="hover:text-white">Terms</a>
+                <a href="#" class="hover:text-white">API</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // パララックス効果の実装
+        document.addEventListener('DOMContentLoaded', () => {
+            const parallaxImages = document.querySelectorAll('.parallax-img');
+            const revealSections = document.querySelectorAll('.reveal-section');
+            const heroTitle = document.getElementById('hero-title');
+            
+            // Intersection Observer for Reveal Effect
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            revealSections.forEach(section => {
+                revealObserver.observe(section);
+            });
+
+            // Parallax Scroll Loop
+            let currentScroll = 0;
+            let targetScroll = 0;
+
+            function updateParallax() {
+                // スムーズなスクロール値の取得（慣性用だが、今回は直接scrollYを使用しつつ線形補間はCSSで対応）
+                const scrollY = window.scrollY;
+                const windowHeight = window.innerHeight;
+
+                // タイトルのパララックス
+                if (heroTitle) {
+                    heroTitle.style.transform = `translateY(${scrollY * 0.2}px)`;
+                    heroTitle.style.opacity = 1 - (scrollY / 500);
+                }
+
+                // 画像のパララックス
+                parallaxImages.forEach(img => {
+                    const rect = img.parentElement.getBoundingClientRect();
+                    const speed = parseFloat(img.getAttribute('data-speed')) || 0.1;
+                    
+                    // 画像が画面内にあるときだけ計算
+                    if (rect.top < windowHeight && rect.bottom > 0) {
+                        // 画面中心からの距離に応じたオフセットを計算
+                        const distanceFromCenter = rect.top - (windowHeight / 2);
+                        const translateY = distanceFromCenter * speed;
+                        
+                        img.style.transform = `translateY(${translateY}px) scale(1.1)`; // scaleで端切れ防止
+                    }
+                });
+
+                requestAnimationFrame(updateParallax);
+            }
+
+            requestAnimationFrame(updateParallax);
+        });
+    </script>
+</body>
+</html>
