@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ハワイ就職・インターンシップ採用面接会 | Special Campaign</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons (Lucide) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'ocean': '#0099CC', /* 画像の明るいブルーに調整 */
+                        'ocean-light': '#E0F7FA',
+                        'sunset': '#FF9F9F', /* 画像のピンクアクセント */
+                        'sand': '#FDFBF7',
+                        'text-dark': '#333333',
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans JP', 'sans-serif'],
+                        script: ['Kaushan Script', 'cursive'],
+                    },
+                    backgroundImage: {
+                        'hero-gradient': "linear-gradient(to bottom, rgba(0,153,204,0.3), rgba(255,255,255,0))",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .text-shadow-sm {
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #0099CC 0%, #FF9F9F 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Ribbon Shape */
+        .ribbon {
+            position: relative;
+            background: #FF9F9F;
+            color: #fff;
+            padding: 0.5em 1em;
+        }
+        .ribbon:before, .ribbon:after {
+            content: "";
+            position: absolute;
+            height: 0;
+            width: 0;
+            top: 0;
+            border-style: solid;
+        }
+    </style>
+</head>
+<body class="bg-sand text-text-dark font-sans antialiased">
+
+    <!-- Header (Sticky) -->
+    <header class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md shadow-sm" id="header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16 md:h-20">
+                <div class="flex items-center">
+                    <span class="font-script text-2xl md:text-3xl text-ocean font-bold">Aloha Career</span>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#mission" class="text-gray-600 hover:text-ocean transition-colors font-bold">ミッション</a>
+                    <a href="#benefits" class="text-gray-600 hover:text-ocean transition-colors font-bold">メリット</a>
+                    <a href="#schedule" class="text-gray-600 hover:text-ocean transition-colors font-bold">当日の流れ</a>
+                    <a href="#faq" class="text-gray-600 hover:text-ocean transition-colors font-bold">FAQ</a>
+                </nav>
+                <a href="#apply" class="hidden md:inline-flex items-center justify-center px-6 py-2 border border-transparent rounded-full shadow-sm text-base font-bold text-white bg-orange-400 hover:bg-orange-500 transition-all transform hover:scale-105 shadow-md">
+                    面接会に申し込む
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 1. Hero Section -->
+    <section class="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1542259646-cdde8572b8f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Hawaii Beach" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-white/10"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto pt-16">
+            <!-- Campaign Title Badge -->
+            <div class="inline-block bg-white/90 backdrop-blur px-6 py-2 rounded-full mb-6 shadow-lg animate-float">
+                <span class="text-ocean font-bold tracking-widest text-sm md:text-base">HAWAII RESTAURANT INTERNSHIP 2025</span>
+            </div>
+            
+            <h1 class="font-black text-white leading-tight mb-4 text-shadow">
+                <span class="block font-script text-6xl md:text-8xl mb-2 text-white drop-shadow-lg">Aloha!</span>
+                <span class="block text-5xl md:text-7xl">ハワイで働こう。</span>
+            </h1>
+            
+            <p class="text-xl md:text-2xl text-white font-bold text-shadow-sm mb-8 tracking-wider">
+                Special Campaign
+            </p>
+
+            <div class="bg-white/90 backdrop-blur-md p-6 rounded-2xl shadow-xl max-w-2xl mx-auto transform hover:scale-105 transition-transform duration-300">
+                <p class="text-ocean font-bold text-lg mb-2">ハワイ企業が緊急来日決定！</p>
+                <p class="text-gray-700 font-medium">現地採用担当と直接話せる、特別な1日。</p>
+            </div>
+
+            <div class="mt-10">
+                <a href="#apply" class="inline-flex items-center justify-center px-10 py-5 border border-transparent text-xl font-bold rounded-full text-white bg-orange-400 hover:bg-orange-500 shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-1 w-full md:w-auto">
+                    面接会に今すぐ申し込む
+                    <i data-lucide="arrow-right" class="ml-2 w-6 h-6"></i>
+                </a>
+                <p class="mt-4 text-white font-bold text-shadow-sm">※ 先着順・定員に達し次第終了</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Mission / Message (Blue Background as per image) -->
+    <section id="mission" class="py-20 bg-ocean text-white relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-white/20 to-transparent"></div>
+        
+        <div class="max-w-5xl mx-auto px-4 text-center scroll-trigger fade-in-up">
+            <h2 class="text-3xl md:text-5xl font-black mb-8 leading-normal">
+                人生をHAPPYにする<br>
+                仕事をする文化
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center text-left">
+                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20">
+                    <p class="text-lg leading-relaxed mb-6 font-medium">
+                        「また戻ってきたい」<br>
+                        世界中の人々を魅了するハワイのおもてなし。<br>
+                        それは、働くスタッフ自身が人生を楽しみ、心からの笑顔で接しているからこそ生まれます。
+                    </p>
+                    <p class="text-lg leading-relaxed font-medium">
+                        私たちは、そんなハワイの企業と、情熱あふれる日本の若者を繋ぐ架け橋です。
+                    </p>
+                </div>
+                
+                <div class="relative">
+                    <div class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white mx-auto shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1589309727039-4467d33d99d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Happy Woman" class="w-full h-full object-cover">
+                    </div>
+                    <!-- Bubble Badge -->
+                    <div class="absolute -top-4 -right-4 bg-sunset text-white p-4 rounded-full w-24 h-24 flex items-center justify-center text-center font-bold text-xs shadow-lg transform rotate-12 animate-pulse">
+                        自分らしく<br>輝く！
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Cost & Pricing (Sand Background) -->
+    <section class="py-24 bg-sand relative">
+        <div class="max-w-4xl mx-auto px-4 text-center scroll-trigger fade-in-up">
+            <div class="inline-block border-b-4 border-sunset mb-4">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800 pb-2">ハワイのインターンシップ参加費用</h2>
+            </div>
+            
+            <p class="text-gray-600 mb-12 font-medium">
+                このチャンスを、誰にでも掴める価格で提供します。
+            </p>
+
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden border-2 border-orange-100 relative max-w-3xl mx-auto">
+                <!-- Ribbon -->
+                <div class="absolute top-0 right-0 bg-sunset text-white text-xs font-bold px-8 py-2 rounded-bl-xl shadow-md">
+                    WEB申し込み限定
+                </div>
+                
+                <div class="p-8 md:p-12">
+                    <div class="flex flex-col md:flex-row items-center justify-center gap-6 mb-8 border-b border-dashed border-gray-200 pb-8">
+                        <div class="text-center">
+                            <p class="text-sm text-gray-500 font-bold mb-1">通常価格</p>
+                            <p class="text-2xl text-gray-400 line-through font-bold">¥400,000</p>
+                        </div>
+                        <div class="hidden md:block text-gray-300 text-4xl">→</div>
+                        <div class="text-center">
+                            <span class="block text-sunset font-bold text-lg mb-1 animate-bounce">Special Price!!</span>
+                            <div class="text-5xl md:text-6xl font-black text-red-500 tracking-tight">
+                                ¥57,364
+                            </div>
+                            <span class="text-sm text-gray-500 font-bold">（税込 ¥63,100）</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-blue-50 rounded-xl p-6 text-left">
+                        <h3 class="text-center font-bold text-ocean mb-4 text-lg">費用に含まれるもの</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-5 h-5 text-sunset"></i>
+                                <span class="text-sm font-bold text-gray-700">ビザ申請フルサポート</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-5 h-5 text-sunset"></i>
+                                <span class="text-sm font-bold text-gray-700">インターン受入企業手配</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-5 h-5 text-sunset"></i>
+                                <span class="text-sm font-bold text-gray-700">渡航前オリエンテーション</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-5 h-5 text-sunset"></i>
+                                <span class="text-sm font-bold text-gray-700">現地生活セットアップ支援</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Why Now (Blue Sky Image Bg) -->
+    <section id="benefits" class="py-24 relative overflow-hidden text-white">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Beach" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-blue-900/40"></div>
+        </div>
+
+        <div class="max-w-6xl mx-auto px-4 relative z-10 text-center scroll-trigger fade-in-up">
+            <h2 class="text-3xl md:text-5xl font-black mb-6 text-shadow">
+                ハワイで働くのは<br>
+                <span class="text-yellow-400">円安の今がチャンス！！</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+                <div class="bg-white/90 backdrop-blur text-gray-800 p-8 rounded-2xl shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-16 h-16 bg-ocean text-white rounded-full flex items-center justify-center mb-4 mx-auto text-2xl font-bold">$</div>
+                    <h3 class="text-xl font-bold mb-3 text-ocean">ドルで稼ぐ強み</h3>
+                    <p class="text-sm leading-relaxed font-medium text-gray-600">
+                        給与はドル払い。日本円換算での価値が高まっています。貯金をして帰国すれば、大きな資産に。
+                    </p>
+                </div>
+                
+                <div class="bg-white/90 backdrop-blur text-gray-800 p-8 rounded-2xl shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-16 h-16 bg-ocean text-white rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <i data-lucide="trending-up" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-ocean">高水準な時給</h3>
+                    <p class="text-sm leading-relaxed font-medium text-gray-600">
+                        最低賃金の上昇に加え、チップ収入も期待できる環境。日本以上の収入を目指せます。
+                    </p>
+                </div>
+
+                <div class="bg-white/90 backdrop-blur text-gray-800 p-8 rounded-2xl shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-16 h-16 bg-ocean text-white rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <i data-lucide="award" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-ocean">キャリアの価値</h3>
+                    <p class="text-sm leading-relaxed font-medium text-gray-600">
+                        世界中のお客様を相手にする経験は、帰国後どこでも通用する最強のキャリアになります。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Work vs Study (Pink Accent Section) -->
+    <section class="py-20 bg-pink-50">
+        <div class="max-w-5xl mx-auto px-4 scroll-trigger fade-in-up">
+            <h2 class="text-3xl md:text-4xl font-black text-center text-sunset mb-12">
+                留学じゃなくて<br>
+                <span class="text-gray-800 border-b-4 border-sunset">“働く”が重要！</span>
+            </h2>
+
+            <div class="flex flex-col md:flex-row gap-8 items-center justify-center">
+                <div class="w-full md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Students" class="rounded-2xl shadow-lg w-full">
+                </div>
+                <div class="w-full md:w-1/2 space-y-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 bg-sunset text-white rounded-full flex items-center justify-center shrink-0 font-bold">1</div>
+                        <div>
+                            <h3 class="font-bold text-lg mb-1">実務経験が身につく</h3>
+                            <p class="text-sm text-gray-600">教室での勉強だけでは得られない、生きたビジネス英語と対応力が身につきます。</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 bg-sunset text-white rounded-full flex items-center justify-center shrink-0 font-bold">2</div>
+                        <div>
+                            <h3 class="font-bold text-lg mb-1">費用を抑えて滞在</h3>
+                            <p class="text-sm text-gray-600">働きながら収入を得られるため、留学に比べて大幅に費用負担を減らせます。</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 bg-sunset text-white rounded-full flex items-center justify-center shrink-0 font-bold">3</div>
+                        <div>
+                            <h3 class="font-bold text-lg mb-1">将来の選択肢が広がる</h3>
+                            <p class="text-sm text-gray-600">海外での就労実績は、帰国後の就職活動やキャリアアップにおいて強力な武器になります。</p>
+                        </div>
+                    </div>
+                    <a href="#apply" class="block text-center text-sunset font-bold underline hover:text-red-500 mt-4">
+                        さらに詳しく見る
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Partners (Restaurant Grid) -->
+    <section class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 text-center scroll-trigger fade-in-up">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
+                ハワイの人気企業・レストランが参加
+            </h2>
+            <p class="text-gray-500 mb-12">今回は、以下の業態を含む多数の企業が参加予定です。</p>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Card 1 -->
+                <div class="group cursor-pointer">
+                    <div class="aspect-video overflow-hidden rounded-xl bg-gray-100 mb-3 shadow-md">
+                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Restaurant" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <p class="font-bold text-sm text-gray-700">人気レストラン</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="group cursor-pointer">
+                    <div class="aspect-video overflow-hidden rounded-xl bg-gray-100 mb-3 shadow-md">
+                        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Cafe" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <p class="font-bold text-sm text-gray-700">有名カフェ</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="group cursor-pointer">
+                    <div class="aspect-video overflow-hidden rounded-xl bg-gray-100 mb-3 shadow-md">
+                        <img src="https://images.unsplash.com/photo-1560624052-449f5ddf0c31?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sweets" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <p class="font-bold text-sm text-gray-700">スイーツ専門店</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="group cursor-pointer">
+                    <div class="aspect-video overflow-hidden rounded-xl bg-gray-100 mb-3 shadow-md">
+                        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Hotel" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <p class="font-bold text-sm text-gray-700">ホテルダイニング</p>
+                </div>
+            </div>
+            
+            <p class="mt-8 text-xs text-gray-400">※ 写真はイメージです。実際の参加企業とは異なる場合があります。</p>
+        </div>
+    </section>
+
+    <!-- 7. Schedule -->
+    <section id="schedule" class="py-20 bg-blue-50">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-ocean mb-12">面接会 当日の流れ</h2>
+            
+            <div class="relative border-l-4 border-ocean/30 ml-6 md:ml-0 space-y-10">
+                <!-- Flow Items -->
+                <div class="relative pl-8 md:pl-12 scroll-trigger fade-in-up">
+                    <div class="absolute -left-[10px] top-2 w-5 h-5 bg-white rounded-full border-4 border-ocean"></div>
+                    <div>
+                        <span class="text-ocean font-bold text-sm">13:00</span>
+                        <h3 class="text-xl font-bold mb-1">受付開始</h3>
+                        <p class="text-gray-600 text-sm">会場にて受付。プロフィールシート提出。</p>
+                    </div>
+                </div>
+
+                <div class="relative pl-8 md:pl-12 scroll-trigger fade-in-up">
+                    <div class="absolute -left-[10px] top-2 w-5 h-5 bg-white rounded-full border-4 border-ocean"></div>
+                    <div>
+                        <span class="text-ocean font-bold text-sm">13:30</span>
+                        <h3 class="text-xl font-bold mb-1">企業説明会</h3>
+                        <p class="text-gray-600 text-sm">各企業の特徴や求人内容のプレゼンテーション。</p>
+                    </div>
+                </div>
+
+                <div class="relative pl-8 md:pl-12 scroll-trigger fade-in-up">
+                    <div class="absolute -left-[10px] top-2 w-5 h-5 bg-white rounded-full border-4 border-ocean"></div>
+                    <div>
+                        <span class="text-ocean font-bold text-sm">14:30</span>
+                        <h3 class="text-xl font-bold mb-1">個別面接会</h3>
+                        <p class="text-gray-600 text-sm">希望企業との1on1面接（通訳サポートあり）。</p>
+                    </div>
+                </div>
+
+                <div class="relative pl-8 md:pl-12 scroll-trigger fade-in-up">
+                    <div class="absolute -left-[10px] top-2 w-5 h-5 bg-sunset rounded-full border-4 border-white shadow"></div>
+                    <div>
+                        <span class="text-sunset font-bold text-sm">終了後</span>
+                        <h3 class="text-xl font-bold mb-1">結果通知</h3>
+                        <p class="text-gray-600 text-sm">マッチング成立後、ビザ申請へ進みます。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. FAQ -->
+    <section id="faq" class="py-20 bg-white">
+        <div class="max-w-3xl mx-auto px-4 scroll-trigger fade-in-up">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">よくある質問</h2>
+            
+            <div class="space-y-4">
+                <details class="group bg-gray-50 rounded-xl overflow-hidden cursor-pointer">
+                    <summary class="flex justify-between items-center font-bold p-5 list-none group-open:bg-ocean/10 transition-colors">
+                        <span class="flex items-center gap-3">
+                            <span class="text-ocean text-xl">Q.</span>
+                            英語が話せなくても参加できますか？
+                        </span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition group-open:rotate-180"></i>
+                    </summary>
+                    <div class="text-gray-600 px-5 pb-5 pt-2 text-sm leading-relaxed ml-8">
+                        はい、参加可能です。おもてなしの心や意欲を重視する企業が多く、英語力に自信がない方でも採用されるチャンスは十分にあります。
+                    </div>
+                </details>
+
+                <details class="group bg-gray-50 rounded-xl overflow-hidden cursor-pointer">
+                    <summary class="flex justify-between items-center font-bold p-5 list-none group-open:bg-ocean/10 transition-colors">
+                        <span class="flex items-center gap-3">
+                            <span class="text-ocean text-xl">Q.</span>
+                            未経験でも大丈夫ですか？
+                        </span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition group-open:rotate-180"></i>
+                    </summary>
+                    <div class="text-gray-600 px-5 pb-5 pt-2 text-sm leading-relaxed ml-8">
+                        はい、未経験歓迎の求人も多数ございます。日本での接客経験があればさらに有利ですが、必須ではありません。
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Closing & CTA -->
+    <section id="apply" class="py-24 relative bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1505228395891-9a51e7e86bf6?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');">
+        <div class="absolute inset-0 bg-ocean/90"></div>
+        
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10 scroll-trigger fade-in-up">
+            <div class="text-white mb-8">
+                <p class="text-xl md:text-2xl font-bold mb-2">ハワイの企業も人を求んでいる特別なイベントになりますので、</p>
+                <h2 class="text-3xl md:text-5xl font-black mb-6 leading-tight">
+                    この機会に、ハワイでの仕事・向き合う<br>
+                    一生の経験をしませんか？
+                </h2>
+                <div class="flex justify-center gap-4 text-xl md:text-2xl font-bold text-yellow-300 mb-8">
+                    <span>[ハワイで働く]</span>
+                    <span>[ハワイで生活する]</span>
+                </div>
+                <p class="text-2xl font-bold text-white mb-10">
+                    夢を実現するのは<span class="text-sunset text-3xl">今しかない！！</span>
+                </p>
+            </div>
+            
+            <a href="#" class="inline-flex items-center justify-center w-full md:w-auto px-12 py-6 bg-orange-400 text-white text-2xl font-bold rounded-full shadow-2xl hover:bg-orange-500 hover:scale-105 transition-all transform animate-bounce">
+                お問い合わせはこちら
+                <i data-lucide="mail" class="ml-3 w-6 h-6"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-12 text-center text-sm border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="mb-8">
+                <span class="font-script text-3xl text-ocean font-bold block mb-2">Step Forward Support</span>
+                <p class="text-gray-400">Hawaii Internship Support Team</p>
+            </div>
+            <div class="flex justify-center gap-6 mb-8 text-gray-500 font-medium">
+                <a href="#" class="hover:text-ocean">運営会社</a>
+                <a href="#" class="hover:text-ocean">プライバシーポリシー</a>
+                <a href="#" class="hover:text-ocean">特定商取引法</a>
+            </div>
+            <p class="text-gray-400">&copy; 2025 Step Forward Support. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Icons
+        lucide.createIcons();
+
+        // Scroll Animation Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.scroll-trigger').forEach((el) => {
+                observer.observe(el);
+            });
+        });
+
+        // Header Stickiness
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-md', 'bg-white/95');
+                header.classList.remove('bg-white/90');
+            } else {
+                header.classList.remove('shadow-md', 'bg-white/95');
+                header.classList.add('bg-white/90');
+            }
+        });
+    </script>
+</body>
+</html>
